@@ -1,6 +1,6 @@
 package com.insurance.Service;
 
-import com.insurance.Config.ResourceNotFoundException;
+import com.insurance.Config.ExpectionNF;
 import com.insurance.Dao.PolicyHolderDoa;
 import com.insurance.Dao.VehicleDoa;
 import com.insurance.Entity.PolicyHolder;
@@ -26,7 +26,7 @@ public class VehicleServiceImpl implements VehicleService{
     @Override
     public List<Vehicle> getAllVehiclesByPolicyNum(int policyNum) {
         if(!vehicleDoa.existsById(policyNum)){
-            throw new ResourceNotFoundException("Vehicle", "PolicyNumber", policyNum);
+            throw new ExpectionNF("Vehicle", "PolicyNumber", policyNum);
         }
         return vehicleDoa.findByPolicy(policyNum);
         // Optional<Vehicle> v = this.vehicleDoa.findById(policyNum);
@@ -41,12 +41,12 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public Vehicle getVehicleByPolicyNum(int policyNum){
-        return vehicleDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("Vehicle", "PolicyNumber", policyNum));
+        return vehicleDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("Vehicle", "PolicyNumber", policyNum));
     }
 
     @Override
     public Vehicle addVehicle(Vehicle vehicle,int policyNum) {
-        PolicyHolder policyHolder = policyHolderDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
+        PolicyHolder policyHolder = policyHolderDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("PolicyHolder", "PolicyNumber", policyNum));
         vehicle.setPolicyHolder(policyHolder);
         return vehicleDoa.save(vehicle);
         // int policy = vehicle.getPolicyHolder().getPolicyNum();
@@ -77,7 +77,7 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public void deleteVehicleByPolicyNum(int id) {
-        vehicleDoa.findById(id).orElseThrow(()->new ResourceNotFoundException("Class","Id",id));
+        vehicleDoa.findById(id).orElseThrow(()->new ExpectionNF("Class","Id",id));
         vehicleDoa.deleteById(id);
     }
 
@@ -85,7 +85,7 @@ public class VehicleServiceImpl implements VehicleService{
     public void deleteAllVehiclesOfPolicyHolder(int id)
     {
         if (!vehicleDoa.existsById(id)) {
-            throw new ResourceNotFoundException("Teacher","Id",id);
+            throw new ExpectionNF("Teacher","Id",id);
         }
         vehicleDoa.deleteById(id);
     }

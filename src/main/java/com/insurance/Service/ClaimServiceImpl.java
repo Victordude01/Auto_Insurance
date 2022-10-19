@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.insurance.Config.ResourceNotFoundException;
+import com.insurance.Config.ExpectionNF;
 import com.insurance.Dao.ClaimDoa;
 import com.insurance.Dao.PolicyHolderDoa;
 import com.insurance.Entity.Claim;
@@ -25,20 +25,20 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public Claim getClaimByPolicyNum(int policyNum){
-        return claimDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
+        return claimDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("PolicyHolder", "PolicyNumber", policyNum));
     }
 
     @Override
     public List<Claim> getAllClaimsByPolicyNum(int policyNum) {
         if(!claimDoa.existsById(policyNum)){
-            throw new ResourceNotFoundException("Vehicle", "PolicyNumber", policyNum);
+            throw new ExpectionNF("Vehicle", "PolicyNumber", policyNum);
         }
         return claimDoa.findByPolicy(policyNum);
     }
 
     @Override
     public Claim addClaim(Claim claim, int policyNum) {
-        PolicyHolder policyHolder = policyHolderDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
+        PolicyHolder policyHolder = policyHolderDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("PolicyHolder", "PolicyNumber", policyNum));
         claim.setPolicyHolder(policyHolder);
         return claimDoa.save(claim);
     }
@@ -54,7 +54,7 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public void deleteClaim(int policyNum) {
-        claimDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("Class","Id",policyNum));
+        claimDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("Class","Id",policyNum));
         claimDoa.deleteById(policyNum);
         
     }

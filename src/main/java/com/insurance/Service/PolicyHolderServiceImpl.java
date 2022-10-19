@@ -2,7 +2,7 @@ package com.insurance.Service;
 
 import com.insurance.Dao.PolicyHolderDoa;
 import com.insurance.Entity.PolicyHolder;
-import com.insurance.Config.ResourceNotFoundException;
+import com.insurance.Config.ExpectionNF;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class PolicyHolderServiceImpl implements PolicyHolderService{
 
     @Override
     public PolicyHolder getPolicyHolderByPolicyNum(int policyNum) {
-        return policyHolderDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
+        return policyHolderDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("PolicyHolder", "PolicyNumber", policyNum));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class PolicyHolderServiceImpl implements PolicyHolderService{
 
     @Override
     public void deletePolicyHolderByPolicyNum(int policyNum) {
-        policyHolderDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
+        policyHolderDoa.findById(policyNum).orElseThrow(()->new ExpectionNF("PolicyHolder", "PolicyNumber", policyNum));
         policyHolderDoa.deleteById(policyNum);
     }
 }
