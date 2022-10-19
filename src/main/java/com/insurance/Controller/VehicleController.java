@@ -2,7 +2,6 @@ package com.insurance.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,18 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.insurance.Dao.PolicyHolderDoa;
-import com.insurance.Dao.VehicleDoa;
+
 import com.insurance.Entity.Vehicle;
 import com.insurance.Service.VehicleService;
 
 @RestController
 @RequestMapping("/api")
 public class VehicleController {
-    @Autowired
-    private PolicyHolderDoa policyHolderDoa;
-    @Autowired
-    private VehicleDoa vehicleDoa;
     private VehicleService vehicleService;
 
     public VehicleController(VehicleService vehicleService){
@@ -42,11 +36,6 @@ public class VehicleController {
     public ResponseEntity<List<Vehicle>> getAllVehiclesByPolicyNum(@PathVariable(value = "id") Integer id){
         return new ResponseEntity<>(vehicleService.getAllVehiclesByPolicyNum(id), HttpStatus.OK);
     }
-
-    // @GetMapping("/policyholders/{id}")
-    // public ResponseEntity<Vehicle> getVehicleByPolicyNum(@PathVariable(value = "id") Long id){
-    //     return new ResponseEntity<>(vehicleService.getVehicleByPolicyNum(id), HttpStatus.OK);
-    // }
 
     @GetMapping("/vehicles")
     public ResponseEntity<List<Vehicle>> getAllVehicles(){

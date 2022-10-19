@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import com.insurance.Config.ResourceNotFoundException;
 import com.insurance.Dao.ClaimDoa;
 import com.insurance.Dao.PolicyHolderDoa;
-import com.insurance.Dao.VehicleDoa;
 import com.insurance.Entity.Claim;
 import com.insurance.Entity.PolicyHolder;
-import com.insurance.Entity.Vehicle;
 
 @Service
 public class ClaimServiceImpl implements ClaimService{

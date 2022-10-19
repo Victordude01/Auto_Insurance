@@ -5,13 +5,10 @@ import com.insurance.Entity.PolicyHolder;
 import com.insurance.Config.ResourceNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+
 
 @Service
 public class PolicyHolderServiceImpl implements PolicyHolderService{
@@ -31,18 +28,7 @@ public class PolicyHolderServiceImpl implements PolicyHolderService{
     @Override
     public PolicyHolder getPolicyHolderByPolicyNum(int policyNum) {
         return policyHolderDoa.findById(policyNum).orElseThrow(()->new ResourceNotFoundException("PolicyHolder", "PolicyNumber", policyNum));
-
-        // Optional<PolicyHolder> i = this.policyHolderDoa.findById(policyNum);
-        // PolicyHolder insurer = null;
-        // if(i.isPresent()){
-        //     insurer = i.get();
-        // }else{
-        //     throw new RuntimeException("Policy Holder not found for policy number: "+policyNum);
-        // }
-        // return insurer;
     }
-
-
 
     @Override
     public PolicyHolder addPolicyHolder(PolicyHolder insurer) {
