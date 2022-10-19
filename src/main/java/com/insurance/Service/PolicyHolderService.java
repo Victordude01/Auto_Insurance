@@ -9,7 +9,7 @@ public interface PolicyHolderService {
     List<PolicyHolder> getAllPolicyHolders();
     PolicyHolder getPolicyHolderByPolicyNum(int policyNum);
     PolicyHolder addPolicyHolder(PolicyHolder insurer);
-    PolicyHolder updatePolicyHolder(PolicyHolder insurer);
-    String deletePolicyHolderByPolicyNum(int policyNum);
+    PolicyHolder updatePolicyHolder(PolicyHolder insurer,int policyNum);
+    void deletePolicyHolderByPolicyNum(int policyNum);
 
 }

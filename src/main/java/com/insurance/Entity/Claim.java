@@ -1,6 +1,5 @@
 package com.insurance.Entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,18 +19,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Vehicles")
-public class Vehicle {
+@Table(name="Claims")
+public class Claim {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int claimNum;
 
     @Column
-    private String make;
+    private String date;
     @Column
-    private String model;
+    private int status;
     @Column
-    private int year;
+    private int car_id;
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "policyNumber")
