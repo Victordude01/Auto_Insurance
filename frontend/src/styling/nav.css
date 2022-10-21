@@ -1,0 +1,53 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(219, 238, 255);
+    align-items: center;
+    padding: 16px 32px;
+}
+
+/* .navbar{
+    border: none;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;    
+}   */
+
+.navbar_link{
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+    margin-right: 16px;
+    padding: 4px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-bottom: 2px solid rgb(88, 110, 129);
+
+}
+
+a:hover {
+    color: #175d43;
+}
+
+
+.profileIcon {
+    height: 32px;
+    width: 32px;
+    padding: 3px;
+    justify-content: center;
+    border-radius: 24px;
+    border: 0;
+    background-color: black;
+}
+
+.signout{
+    border: none;
+    background-color: white;
+}
+
+.signout:hover{
+    color:rgb(128, 184, 234);
+}
+
