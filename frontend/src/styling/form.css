@@ -37,8 +37,9 @@ input {
     font-size: 15px;
 }
 
-.submit{
+.create{
     margin-top: 30px;
+    margin-left: 24px;
     border: 2px black solid;
     padding: 8px 34px;
     border-radius: 8px;
@@ -46,6 +47,29 @@ input {
     background-color: rgb(181, 214, 193);
 }
 
-.submit:hover{
+.create:hover{
     background-color: rgb(155, 193, 169);
+}
+
+.bt-1{
+    display: flex;
+}
+
+.cancel{
+    margin-top: 30px;
+    margin-left: 20px;
+    border: 2px black solid;
+    padding: 8px 34px;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: rgb(214, 181, 186);
+    text-decoration: none;
+}
+
+.cancel:hover{
+    background-color: rgb(181, 134, 134);
+}
+
+.cancel:visited{
+    color:black
 }

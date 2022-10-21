@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import PolicyHolderService from '../services/PolicyHolderService'
 import './../styling/form.css'
+import { Link, } from "react-router-dom"
+
 
 const AddPolicyHolder = () => {
     const[policyNum,setPolicyNum] = useState('')
@@ -12,14 +14,18 @@ const AddPolicyHolder = () => {
     const savePolicyHolder = (e) => {
         e.preventDefault();
 
-        const policyholder = {policyNum,name,phoneNumber,email,address}
-        console.log(policyholder)
+        if(!policyNum || !name || !phoneNumber || !email || !address)alert("Please fill in all the information");
+        else{
+          const policyholder = {policyNum,name,phoneNumber,email,address}
+          console.log(policyholder)
 
-        PolicyHolderService.createPolicyHolder(policyholder).then((response) =>{
-            console.log(response.data)
-        }).catch(error =>{
-            console.log(error)
-        })
+          PolicyHolderService.createPolicyHolder(policyholder).then((response) =>{
+              console.log(response.data)
+          }).catch(error =>{
+              console.log(error)
+          })
+        }
+
     }
 
     return (
@@ -61,10 +67,12 @@ const AddPolicyHolder = () => {
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Address"
           />
-          <button className="submit" onClick={(e) => savePolicyHolder(e)}>
+          <div className='bt-1'>
+            <button className="create" onClick={(e) => savePolicyHolder(e)}>
             Create
-          </button>
-  
+            </button>
+            <Link to ="/policyholders" className="cancel">Cancel</Link>
+          </div>
         </div>
       </div>
     )
