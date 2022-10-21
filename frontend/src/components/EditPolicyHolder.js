@@ -16,12 +16,12 @@ const EditPolicyHolder = () => {
     const savePolicyHolder = (e) => {
         e.preventDefault();
 
-        if(!policyNum || !name || !phoneNumber || !email || !address)alert("Please fill in all the information");
+        if(!name || !phoneNumber || !email || !address)alert("Please fill in all the information");
         else{
           const policyholder = {policyNum,name,phoneNumber,email,address}
           console.log(policyholder)
 
-          PolicyHolderService.createPolicyHolder(policyholder).then((response) =>{
+          PolicyHolderService.updatePolicyHolder(policyNum,policyholder).then((response) =>{
               console.log(response.data)
           }).catch(error =>{
               console.log(error)

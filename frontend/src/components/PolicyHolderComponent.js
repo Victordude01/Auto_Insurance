@@ -6,13 +6,25 @@ const PolicyHolderComponent = () => {
     const[policyholders,setPolicyHolders] = useState([])
 
     useEffect(() => {
+        getAllPolicyHolders();
+    },[])
+
+    const getAllPolicyHolders = () => {
         PolicyHolderService.getAllPolicyHolders().then((response) => {
             setPolicyHolders(response.data)
             console.log(response.data);
         }).catch(error =>{
             console.log(error);
         })
-    },[])
+    }
+
+    const deletePolicyHolder = (policyNum) =>{
+        PolicyHolderService.deletePolicyHolder(policyNum).then((reponse) =>{
+            getAllPolicyHolders();
+        }).catch(error =>{
+            console.log(error);
+        })
+    }
 
     return (
         <div className='container'>
@@ -30,8 +42,7 @@ const PolicyHolderComponent = () => {
                         <th>Address</th>
                         <th>Actions</th>
                     </thead>
-                    <tbody>
-                        {
+                    <tbody>{
                             policyholders.map(
                                 policyholder =>
                                 <tr key = {policyholder.policyNum}>
@@ -40,8 +51,9 @@ const PolicyHolderComponent = () => {
                                     <td>{policyholder.phoneNumber}</td>
                                     <td>{policyholder.email}</td>
                                     <td>{policyholder.address}</td>
-                                    <td>
-                                        <Link to={`/edit-policyholder/${policyholder.policyNum}`}>Update</Link>
+                                    <td className='buts'>
+                                        <Link className='update-btn' to={`/edit-policyholder/${policyholder.policyNum}`}>Update</Link>
+                                        <button className='delete-btn' onClick={() => deletePolicyHolder(policyholder.policyNum)}>Delete</button>
                                     </td>
                                 </tr>
                             )

@@ -14,6 +14,10 @@ code {
     monospace;
 }
 
+h2{
+  font-size: 28px;
+}
+
 #column{
   font-weight: bold;
   border-bottom: 3px solid black;
@@ -32,12 +36,13 @@ th{
 }
 
 td{
-  font-size: 16px;
+  font-size: 17px;
   padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .ph{
-  width: 850px;
+  width: 900px;
   margin-left: auto;
   margin-right: auto;
   border: black 2px solid;
@@ -65,4 +70,42 @@ td{
 
 .add-btn:hover{
   background-color: rgb(155, 193, 169);
+}
+
+.buts{
+  display: inline-flex;
+}
+
+.update-btn{
+  text-decoration: none;
+  border: 1px black solid;
+  padding: 1px 5px;
+  border-radius: 7px;
+  background-color: lightgreen;
+  color:black;
+  margin-right: 5px;
+}
+
+.delete-btn{
+  text-decoration: none;
+  font-size: 17px;
+  border: 1px black solid;
+  padding: 1px 5px;
+  border-radius: 7px;
+  background-color: lightcoral;
+  color:black;
+  margin-right: 5px;
+}
+
+.delete-btn:hover{
+  background-color: rgb(178, 84, 84);
+  cursor: pointer;
+}
+
+.update-btn:visited{
+  color:black;
+}
+
+.update-btn:hover{
+  background-color: rgb(107, 180, 107);
 }
