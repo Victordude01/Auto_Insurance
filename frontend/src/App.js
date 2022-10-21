@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Footer from "./components/Footer";
 import PolicyHolderComponent from "./components/PolicyHolderComponent";
+import AddPolicyHolder from "./components/AddPolicyHolder";
 
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/policyholders" element={<PolicyHolderComponent />} />
+          <Route path="/add-policyholder" element={<AddPolicyHolder />} />
+
         </Routes>
         <Footer />
       </Router>

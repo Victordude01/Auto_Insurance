@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import PolicyHolderService from '../services/PolicyHolderService'
+import {Link} from "react-router-dom"
 
 const PolicyHolderComponent = () => {
     const[policyholders,setPolicyHolders] = useState([])
@@ -15,6 +16,7 @@ const PolicyHolderComponent = () => {
 
     return (
         <div className='container'>
+            <Link to = "add-policyholder" className = "add-btn">Create New Policy</Link>
             <h2 className='text-center'>Policy Holders</h2>
             <table>
                 <thead>
