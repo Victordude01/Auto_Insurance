@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import PolicyHolderService from '../services/PolicyHolderService'
 import './../styling/form.css'
 
 const AddPolicyHolder = () => {
@@ -12,8 +13,13 @@ const AddPolicyHolder = () => {
         e.preventDefault();
 
         const policyholder = {policyNum,name,phone,email,address}
+        console.log(policyholder)
 
-        console.log(policyholder);
+        PolicyHolderService.createPolicyHolder(policyholder).then((response) =>{
+            console.log(response.data)
+        }).catch(error =>{
+            console.log(error)
+        })
     }
 
     return (

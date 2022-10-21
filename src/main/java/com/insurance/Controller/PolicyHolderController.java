@@ -35,6 +35,8 @@ public class PolicyHolderController {
         return new ResponseEntity<>(policyHolderService.addPolicyHolder(policyHolder), HttpStatus.CREATED);
     }
 
+  
+
     @GetMapping
     public List<PolicyHolder> getAllPolicyHolders(){
         return policyHolderService.getAllPolicyHolders();

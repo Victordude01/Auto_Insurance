@@ -6,6 +6,10 @@ class PolicyHolderService{
   getAllPolicyHolders(){
     return axios.get(POLICYHOLDER_BASE_REST_API_URL)
   }
+
+  createPolicyHolder(policyholder){
+    return axios.post(PolicyHolderService,policyholder)
+  }
 }
 
 export default new PolicyHolderService();
