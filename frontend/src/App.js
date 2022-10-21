@@ -14,8 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/policyholders" element={<PolicyHolderComponent />} />
-          <Route path="/add-policyholder" element={<AddPolicyHolder />} />
-
+          <Route path="/policyholders/add-policyholder" element={<AddPolicyHolder />} />
         </Routes>
         <Footer />
       </Router>
