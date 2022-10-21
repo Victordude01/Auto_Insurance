@@ -18,7 +18,7 @@ import com.insurance.Entity.PolicyHolder;
 import com.insurance.Service.PolicyHolderService;
 
 @RestController
-@RequestMapping("/api/policyholders")
+@RequestMapping("/policyholders")
 public class PolicyHolderController {
     private PolicyHolderService policyHolderService;
 
