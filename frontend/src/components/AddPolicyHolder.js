@@ -5,14 +5,14 @@ import './../styling/form.css'
 const AddPolicyHolder = () => {
     const[policyNum,setPolicyNum] = useState('')
     const[name,setName] = useState('')
-    const[phone,setPhone] = useState('')
+    const[phoneNumber,setPhoneNumber] = useState('')
     const[email,setEmail] = useState('')
     const[address,setAddress] = useState('')
 
     const savePolicyHolder = (e) => {
         e.preventDefault();
 
-        const policyholder = {policyNum,name,phone,email,address}
+        const policyholder = {policyNum,name,phoneNumber,email,address}
         console.log(policyholder)
 
         PolicyHolderService.createPolicyHolder(policyholder).then((response) =>{
@@ -27,7 +27,7 @@ const AddPolicyHolder = () => {
         <div>
         <p className="title">Create A New Policy</p>
           <input
-            type="text"
+            type="number"
             className="textBox"
             value={policyNum}
             onChange={(e) => setPolicyNum(e.target.value)}
@@ -43,8 +43,8 @@ const AddPolicyHolder = () => {
               <input
             type="text"
             className="textBox"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
             placeholder="Phone Number"
           />
           <input

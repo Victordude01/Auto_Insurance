@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.insurance.Dao.PolicyHolderDoa;
 import com.insurance.Entity.PolicyHolder;
 import com.insurance.Service.PolicyHolderService;
 
@@ -23,6 +23,7 @@ import com.insurance.Service.PolicyHolderService;
 @RequestMapping("/policyholders")
 public class PolicyHolderController {
     private PolicyHolderService policyHolderService;
+    // private PolicyHolderDoa policyHolderDoa;
 
     public PolicyHolderController(PolicyHolderService policyHolderService){
         super();
@@ -30,10 +31,13 @@ public class PolicyHolderController {
     }
 
     @PostMapping()
-    public ResponseEntity<PolicyHolder> addPolicyHolder(@RequestBody PolicyHolder policyHolder)
-    {
+    public ResponseEntity<PolicyHolder> addPolicyHolder(@RequestBody PolicyHolder policyHolder){
         return new ResponseEntity<>(policyHolderService.addPolicyHolder(policyHolder), HttpStatus.CREATED);
     }
+
+    // @PostMapping PolicyHolder createPolicy(@RequestBody PolicyHolder policyHolder){
+    //     return policyHolderDoa.save(policyHolder);
+    // }
 
   
 
@@ -48,14 +52,12 @@ public class PolicyHolderController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<PolicyHolder> updatePolicyHolder(@RequestBody PolicyHolder policyHolder, @PathVariable("id") int id)
-    {
+    public ResponseEntity<PolicyHolder> updatePolicyHolder(@RequestBody PolicyHolder policyHolder, @PathVariable("id") int id){
         return new ResponseEntity<>(policyHolderService.updatePolicyHolder(policyHolder,id), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deletePolicyHolderByPolicyNum(@PathVariable("id") int id)
-    {
+    public ResponseEntity<String> deletePolicyHolderByPolicyNum(@PathVariable("id") int id){
         policyHolderService.deletePolicyHolderByPolicyNum(id);
         return new ResponseEntity<>("Policy Holder deleted", HttpStatus.OK);
     }

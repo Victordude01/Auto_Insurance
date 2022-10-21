@@ -8,7 +8,7 @@ class PolicyHolderService{
   }
 
   createPolicyHolder(policyholder){
-    return axios.post(PolicyHolderService,policyholder)
+    return axios.post(POLICYHOLDER_BASE_REST_API_URL,policyholder)
   }
 }
 
