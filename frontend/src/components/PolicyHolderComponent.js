@@ -28,6 +28,7 @@ const PolicyHolderComponent = () => {
                         <th>Phone Number</th>
                         <th>Email</th>
                         <th>Address</th>
+                        <th>Actions</th>
                     </thead>
                     <tbody>
                         {
@@ -39,6 +40,9 @@ const PolicyHolderComponent = () => {
                                     <td>{policyholder.phoneNumber}</td>
                                     <td>{policyholder.email}</td>
                                     <td>{policyholder.address}</td>
+                                    <td>
+                                        <Link to={`/edit-policyholder/${policyholder.policyNum}`}>Update</Link>
+                                    </td>
                                 </tr>
                             )
                         }

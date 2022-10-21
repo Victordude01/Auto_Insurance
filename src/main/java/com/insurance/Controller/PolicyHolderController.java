@@ -23,7 +23,6 @@ import com.insurance.Service.PolicyHolderService;
 @RequestMapping("/policyholders")
 public class PolicyHolderController {
     private PolicyHolderService policyHolderService;
-    // private PolicyHolderDoa policyHolderDoa;
 
     public PolicyHolderController(PolicyHolderService policyHolderService){
         super();
@@ -35,11 +34,6 @@ public class PolicyHolderController {
         return new ResponseEntity<>(policyHolderService.addPolicyHolder(policyHolder), HttpStatus.CREATED);
     }
 
-    // @PostMapping PolicyHolder createPolicy(@RequestBody PolicyHolder policyHolder){
-    //     return policyHolderDoa.save(policyHolder);
-    // }
-
-  
 
     @GetMapping
     public List<PolicyHolder> getAllPolicyHolders(){

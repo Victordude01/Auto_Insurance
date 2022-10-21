@@ -1,15 +1,17 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import PolicyHolderService from '../services/PolicyHolderService'
 import './../styling/form.css'
-import { Link,useNavigate} from "react-router-dom"
+import { Link,useNavigate,useParams} from "react-router-dom"
 
-const AddPolicyHolder = () => {
-    const[policyNum,setPolicyNum] = useState('')
+const EditPolicyHolder = () => {
     const[name,setName] = useState('')
     const[phoneNumber,setPhoneNumber] = useState('')
     const[email,setEmail] = useState('')
     const[address,setAddress] = useState('')
     const nav = useNavigate();
+
+    const {policyNum} = useParams();
+    console.log("start: "+policyNum);
 
     const savePolicyHolder = (e) => {
         e.preventDefault();
@@ -28,15 +30,26 @@ const AddPolicyHolder = () => {
         }
     }
 
+    useEffect(() => {
+      PolicyHolderService.getPolicyHolderByID(policyNum).then((response) => {
+        setName(response.data.name)
+        setPhoneNumber(response.data.phoneNumber)
+        setEmail(response.data.email)
+        setAddress(response.data.address)
+      }).catch(error =>{
+        console.log(error)
+      })
+    },[])
+
     return (
         <div className="form">
         <div>
-          <p className="title">Create A New Policy</p>
+          <p className="title">Update Policy</p>
           <input
             type="number"
             className="textBox"
             value={policyNum}
-            onChange={(e) => setPolicyNum(e.target.value)}
+            readOnly
             placeholder="Policy Number (7 digits)"
           />
             <input
@@ -68,12 +81,11 @@ const AddPolicyHolder = () => {
             placeholder="Address"
           />
           <div className='bt-1'>
-            <button className="create" onClick={(e) => savePolicyHolder(e)}>Create</button>
+            <button className="create" onClick={(e) => savePolicyHolder(e)}>Update</button>
             <Link to ="/policyholders" className="cancel">Cancel</Link>
           </div>
         </div>
       </div>
     )
 }
-
-export default AddPolicyHolder
+export default EditPolicyHolder

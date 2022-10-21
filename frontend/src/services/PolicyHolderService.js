@@ -10,6 +10,10 @@ class PolicyHolderService{
   createPolicyHolder(policyholder){
     return axios.post(POLICYHOLDER_BASE_REST_API_URL,policyholder)
   }
+
+  getPolicyHolderByID(id){
+    return axios.get(POLICYHOLDER_BASE_REST_API_URL + '/' + id)
+  }
 }
 
 export default new PolicyHolderService();
