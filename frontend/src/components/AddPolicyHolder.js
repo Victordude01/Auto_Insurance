@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import PolicyHolderService from '../services/PolicyHolderService'
 import './../styling/form.css'
-import { Link, } from "react-router-dom"
+import { Link,useNavigate} from "react-router-dom"
+
 
 
 const AddPolicyHolder = () => {
@@ -10,6 +11,7 @@ const AddPolicyHolder = () => {
     const[phoneNumber,setPhoneNumber] = useState('')
     const[email,setEmail] = useState('')
     const[address,setAddress] = useState('')
+    const nav = useNavigate();
 
     const savePolicyHolder = (e) => {
         e.preventDefault();
@@ -24,6 +26,7 @@ const AddPolicyHolder = () => {
           }).catch(error =>{
               console.log(error)
           })
+          nav('/policyholders');
         }
 
     }
