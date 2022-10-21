@@ -16,31 +16,35 @@ const PolicyHolderComponent = () => {
 
     return (
         <div className='container'>
-            <Link to = "add-policyholder" className = "add-btn">Create New Policy</Link>
-            <h2 className='text-center'>Policy Holders</h2>
-            <table>
-                <thead>
-                    <th>Policy Number</th>
-                    <th>Full Name</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                </thead>
-                <tbody>
-                    {
-                        policyholders.map(
-                            policyholder =>
-                            <tr key = {policyholder.policyNum}>
-                                <td>{policyholder.policyNum}</td>
-                                <td>{policyholder.name}</td>
-                                <td>{policyholder.phoneNumber}</td>
-                                <td>{policyholder.email}</td>
-                                <td>{policyholder.address}</td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+            <div className='top'>
+                <Link to = "add-policyholder" className = "add-btn">Create New Policy</Link>
+            </div>
+            <h2>Current Policy Holders</h2>
+            <div className='ph'>
+                <table>
+                    <thead>
+                        <th>Policy Number</th>
+                        <th>Full Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                    </thead>
+                    <tbody>
+                        {
+                            policyholders.map(
+                                policyholder =>
+                                <tr key = {policyholder.policyNum}>
+                                    <td>{policyholder.policyNum}</td>
+                                    <td>{policyholder.name}</td>
+                                    <td>{policyholder.phoneNumber}</td>
+                                    <td>{policyholder.email}</td>
+                                    <td>{policyholder.address}</td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

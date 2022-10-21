@@ -2,14 +2,13 @@
 .header{
     display: flex;
     justify-content: space-between;
-    background-color: rgb(219, 238, 255);
+    background-color: rgb(181, 214, 193);
     align-items: center;
     padding: 16px 32px;
 }
 
 .navbar_link{
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-
     margin-right: 16px;
     padding: 4px;
     font-weight: bold;
